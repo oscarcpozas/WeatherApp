@@ -1,5 +1,6 @@
 package com.study.jam.weather.ui.activity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.study.jam.weather.R;
+import com.study.jam.weather.rest.HTTP;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,8 +32,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); //Instanciamos nuestra toolbar
         setSupportActionBar(toolbar);
 
-        TextView textView = (TextView) findViewById(R.id.text_view);
-        textView.setText("Oscar is a hero!");
+        HTTP http_connection = new HTTP();
+        String data = http_connection.getDataforAPI();
+
+        if(data != null) {
+            HTTPTask httpTask = new HTTPTask();
+            httpTask.execute();
+        }
     }
 
     @Override
@@ -52,5 +59,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    private class HTTPTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            return null;
+        }
+
     }
 }
