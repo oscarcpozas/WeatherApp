@@ -14,13 +14,8 @@ public class HTTP {
     HttpURLConnection urlConnection = null;
     BufferedReader reader = null;
 
-    // Will contain the raw JSON response as a string.
     String forecastJsonStr = null;
     final String API_URL = "HTTP://api.openweathermap.org/data/2.5/forecast/daily?q=94043&mode=json&units=metric&cnt=7";
-
-    public HTTP() {
-
-    }
 
     public String getDataforAPI() {
         try {

@@ -2,15 +2,16 @@ package com.study.jam.weather.ui.activity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.TextView;
 
 import com.study.jam.weather.R;
-import com.study.jam.weather.rest.HTTP;
+import com.study.jam.weather.model.Weather;
+import com.study.jam.weather.ui.adapter.RecyclerAdapter;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,13 +33,26 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); //Instanciamos nuestra toolbar
         setSupportActionBar(toolbar);
 
-        HTTP http_connection = new HTTP();
+        ArrayList<Weather> data = new ArrayList<>();
+        data.add(new Weather().setTitle("Tiempo en Madrid"));
+        data.add(new Weather().setTitle("Tiempo en Cáceres"));
+        data.add(new Weather().setTitle("Tiempo en Burgos"));
+        data.add(new Weather().setTitle("Tiempo en Cadiz"));
+
+        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(data);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.weather_list);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(
+                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(recyclerAdapter);
+
+        /* HTTP http_connection = new HTTP();
         String data = http_connection.getDataforAPI();
 
         if(data != null) {
             HTTPTask httpTask = new HTTPTask();
             httpTask.execute();
-        }
+        } */
     }
 
     @Override

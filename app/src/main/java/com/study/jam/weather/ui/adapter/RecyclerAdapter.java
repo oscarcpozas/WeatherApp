@@ -33,7 +33,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        viewHolder.bindData("Hola");
+        viewHolder.bindData(data.get(position).getTitle());
     }
 
     @Override

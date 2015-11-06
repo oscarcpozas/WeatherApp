@@ -8,7 +8,8 @@ public class Weather {
         return title;
     }
 
-    public void setTitle(String title) {
+    public Weather setTitle(String title) {
         this.title = title;
+        return this;
     }
 }
