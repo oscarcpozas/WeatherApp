@@ -34,10 +34,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ArrayList<Weather> data = new ArrayList<>();
-        data.add(new Weather().setTitle("Tiempo en Madrid"));
-        data.add(new Weather().setTitle("Tiempo en Cáceres"));
-        data.add(new Weather().setTitle("Tiempo en Burgos"));
-        data.add(new Weather().setTitle("Tiempo en Cadiz"));
+        for(int i=0; i<30; i++)
+            data.add(new Weather().setTitle("Tiempo en ciudad " + i));
 
         RecyclerAdapter recyclerAdapter = new RecyclerAdapter(data);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.weather_list);
@@ -45,14 +43,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(recyclerAdapter);
-
-        /* HTTP http_connection = new HTTP();
-        String data = http_connection.getDataforAPI();
-
-        if(data != null) {
-            HTTPTask httpTask = new HTTPTask();
-            httpTask.execute();
-        } */
     }
 
     @Override
@@ -73,14 +63,5 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-    }
-
-    private class HTTPTask extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            return null;
-        }
-
     }
 }

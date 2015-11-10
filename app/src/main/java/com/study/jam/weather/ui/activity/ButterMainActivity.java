@@ -34,8 +34,10 @@ public class ButterMainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ArrayList<Weather> data = new ArrayList<>();
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(data);
+        for(int i=0; i<30; i++)
+            data.add(new Weather().setTitle("Tiempo en ciudad " + i));
 
+        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(data);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
