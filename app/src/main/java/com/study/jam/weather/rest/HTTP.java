@@ -15,11 +15,10 @@ public class HTTP {
     BufferedReader reader = null;
 
     String forecastJsonStr = null;
-    final String API_URL = "HTTP://api.openweathermap.org/data/2.5/forecast/daily?q=94043&mode=json&units=metric&cnt=7";
 
-    public String getDataforAPI() {
+    public String getDataforAPI(String urlStr) {
         try {
-            URL url = new URL(API_URL);
+            URL url = new URL(urlStr);
 
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
@@ -31,11 +30,11 @@ public class HTTP {
             reader = new BufferedReader(new InputStreamReader(inputStream));
 
             String line;
-            while ((line = reader.readLine()) != null) {
+            while((line = reader.readLine()) != null) {
                 buffer.append(line + "\n");
             }
 
-            if (buffer.length() == 0) { return null; }
+            if(buffer.length() == 0) { return null; }
             forecastJsonStr = buffer.toString();
         } catch (IOException e) {
             return null;
