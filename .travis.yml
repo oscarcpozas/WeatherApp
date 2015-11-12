@@ -1,4 +1,5 @@
 language: android
+sudo: true
 
 android:
   components:
@@ -8,5 +9,11 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
 
+branches:
+  only:
+   - master
+
 script:
-  ./gradlew checkstyle build
+  ./gradlew assemble
+  ./gradlew assembleAndroidTest
+  ./gradlew build
