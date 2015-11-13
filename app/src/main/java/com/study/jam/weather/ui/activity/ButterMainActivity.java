@@ -1,5 +1,6 @@
 package com.study.jam.weather.ui.activity;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -44,7 +45,7 @@ public class ButterMainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        new ConnectionAPITask().execute(); // Ejecutamos nuestra tarea definida en el Asynctask
+        new ConnectionAPITask(this).execute(); // Ejecutamos nuestra tarea definida en el Asynctask
     }
 
     /**
@@ -54,6 +55,12 @@ public class ButterMainActivity extends AppCompatActivity {
      * con el WeatherDataParser, se la pasamos al RecyclerView para que la muestre en pantalla.
      */
     public class ConnectionAPITask extends AsyncTask<Void, Void, String> { // AsyncTask<Parametros, Progreso, Resultado> -- Son los tipos con los que trabajara el Asynctask
+
+        private Context context;
+
+        public ConnectionAPITask(Context context) {
+            this.context = context;
+        }
 
         @Override
         protected void onPreExecute() { // Este metodo se ejecuta en el UI Thread
@@ -75,7 +82,7 @@ public class ButterMainActivity extends AppCompatActivity {
                 WeatherDataParser parser = new WeatherDataParser();
                 final ArrayList<Weather> data = parser.getWeatherDataFromJson(result);
 
-                RecyclerAdapter recyclerAdapter = new RecyclerAdapter(data);
+                RecyclerAdapter recyclerAdapter = new RecyclerAdapter(context, data);
                 recyclerView.setAdapter(recyclerAdapter);
             } catch (JSONException e) { e.printStackTrace(); }
         }

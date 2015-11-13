@@ -1,11 +1,14 @@
 package com.study.jam.weather.ui.activity;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.study.jam.weather.R;
 import com.study.jam.weather.model.Weather;
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        ConnectionAPITask apiTask = new ConnectionAPITask(recyclerView, API_URL);
+        ConnectionAPITask apiTask = new ConnectionAPITask(this, recyclerView, API_URL);
         apiTask.execute(); // Ejecutamos nuestra tarea definida en el Asynctask
     }
 
@@ -68,6 +71,24 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.new_game:
+                return true;
+            case R.id.help:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     /**
      * Como no podemos realizar tareas que interrumpan el UI Thread, debemos ejecutar la
      * petición a la API en un hilo paralelo, los Asynctask nos ayudan con esta tarea.
@@ -78,8 +99,10 @@ public class MainActivity extends AppCompatActivity {
 
         private String url;
         private RecyclerView recyclerView;
+        private Context context;
 
-        public ConnectionAPITask(RecyclerView recyclerView, String url) {
+        public ConnectionAPITask(Context context, RecyclerView recyclerView, String url) {
+            this.context = context;
             this.url = url;
             this.recyclerView = recyclerView;
         }
@@ -104,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 WeatherDataParser parser = new WeatherDataParser();
                 final ArrayList<Weather> data = parser.getWeatherDataFromJson(result);
 
-                RecyclerAdapter recyclerAdapter = new RecyclerAdapter(data);
+                RecyclerAdapter recyclerAdapter = new RecyclerAdapter(context, data);
                 recyclerView.setAdapter(recyclerAdapter);
             } catch (JSONException e) { e.printStackTrace(); }
         }
