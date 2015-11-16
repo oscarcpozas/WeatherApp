@@ -12,7 +12,7 @@ encuentra en [Udacity](https://www.udacity.com/course/viewer#!/c-ud853/l-1395568
 Por cada sesión dada se crea una nueva Release con el resumen de la sesión y capturas del resultado
 ademas del codigo de que se ha escrito.
 
-**RECUERDA**: No necesariamente el ultimo commit realizado corresponde con lo hecho en la ultima sesión, te recomiendo siempre
+>  **RECUERDA**: No necesariamente el ultimo commit realizado corresponde con lo hecho en la ultima sesión, te recomiendo siempre
 bajar el codigo desde la Release.
 
 ## No somos perfectos...
