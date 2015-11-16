@@ -23,3 +23,4 @@ no dudes en abrir un Issue con lo que hayas encontrado mal en el codigo, intenta
 * Lection I: Creación del proyecto, creando nuestra primera activity.
 * Lection II (Datos en local): Creando nuestra lista de datos.
 * Lection II (Datos de la API): Usando los datos de la API del tiempo para llenar nuestra lista.
+* Lection III (v1): Creamos nuestro segundo Activity que salta al pulsar algún Item de la lista.

@@ -35,7 +35,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
 
         viewHolder = new MyViewHolder(itemView, new MyViewHolder.MyViewHolderClicks() {
             @Override
-            public void onTextViewIsClicked(View view) {
+            public void onTextViewIsClicked(View view) { // Esto es el Listener que salta cuando se clicka nuestro TextView de alguno de los item de la lista
                 TextView textView = (TextView) view;
 
                 Intent i = new Intent(context, DetailsActivity.class);
@@ -44,9 +44,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
             }
 
             @Override
-            public void onImageViewIsClicked(View view) {
-
-            }
+            public void onImageViewIsClicked(View view) { }
         });
 
         return viewHolder;
@@ -86,7 +84,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
 
         @Override
         public void onClick(View v) {
-            Log.d("Hello", "Hello bitch!");
             if(v instanceof TextView) {
                 listener.onTextViewIsClicked(v);
             } else if (v instanceof ImageView) {

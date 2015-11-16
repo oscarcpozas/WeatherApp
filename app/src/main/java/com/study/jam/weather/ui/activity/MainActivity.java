@@ -80,9 +80,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.new_game:
-                return true;
-            case R.id.help:
+            case R.id.settings:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
