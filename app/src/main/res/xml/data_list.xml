@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <string-array name="metrics">
+        <item>Celsius</item>
+        <item>Kelvin</item>
+    </string-array>
+    <string-array name="metrics_values">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>

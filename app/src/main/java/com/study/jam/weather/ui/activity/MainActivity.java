@@ -1,8 +1,11 @@
 package com.study.jam.weather.ui.activity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -47,8 +50,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String location = prefs.getString("location", "94043");
+
+        final String API_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + location + "&mode=json&units=metric&cnt=7&appid=381bdcc454a4b9678f11fdb192cca4ad";
+
         ConnectionAPITask apiTask = new ConnectionAPITask(this, recyclerView, API_URL);
-        apiTask.execute(); // Ejecutamos nuestra tarea definida en el Asynctask
+        //apiTask.execute(); // Ejecutamos nuestra tarea definida en el Asynctask
     }
 
     @Override
@@ -81,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.settings:
+                startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

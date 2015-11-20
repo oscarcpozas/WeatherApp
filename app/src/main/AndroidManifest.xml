@@ -34,6 +34,12 @@
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
 
+        <activity
+            android:name=".ui.activity.SettingsActivity"
+            android:label="Settings"
+            android:theme="@style/AppTheme">
+        </activity>
+
     </application>
 
 </manifest>

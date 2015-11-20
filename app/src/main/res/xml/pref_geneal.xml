@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="General">
+
+        <EditTextPreference
+            android:title="¿Cual es tu ubicación?"
+            android:key="location"
+            android:defaultValue="94043"
+            android:inputType="text"
+            android:singleLine="true"/>
+
+        <ListPreference
+            android:title="¿Que unidades prefieres?"
+            android:key="list_preference"
+            android:summary="Celsius"
+            android:entries="@xml/data_list"
+            android:entryValues="@xml/data_list"
+            android:dialogTitle="¿Que unidades prefieres?" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
