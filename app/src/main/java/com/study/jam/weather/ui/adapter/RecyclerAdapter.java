@@ -1,9 +1,10 @@
 package com.study.jam.weather.ui.adapter;
 
+import android.app.Activity;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,8 @@ import android.widget.TextView;
 
 import com.study.jam.weather.R;
 import com.study.jam.weather.model.Weather;
-import com.study.jam.weather.ui.activity.DetailsActivity;
+import com.study.jam.weather.ui.fragment.DetailsFragment;
 
-import java.net.ConnectException;
 import java.util.ArrayList;
 
 public class RecyclerAdapter extends RecyclerView.Adapter {
@@ -35,12 +35,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
 
         viewHolder = new MyViewHolder(itemView, new MyViewHolder.MyViewHolderClicks() {
             @Override
-            public void onTextViewIsClicked(View view) { // Esto es el Listener que salta cuando se clicka nuestro TextView de alguno de los item de la lista
+            public void onTextViewIsClicked(View view) { // Escucha los click sobre los TextView de los items de la lista
                 TextView textView = (TextView) view;
 
-                Intent i = new Intent(context, DetailsActivity.class);
-                i.putExtra("TITLE", textView.getText().toString());
-                context.startActivity(i);
+                // Creamos un fragment y lo mostramos como Dialog
+                FragmentManager manager = ((Activity) context).getFragmentManager();
+                DialogFragment newFragment =
+                        DetailsFragment.newInstance(textView.getText().toString());
+                newFragment.show(manager, "Dialog");
             }
 
             @Override

@@ -1,6 +1,5 @@
 package com.study.jam.weather.ui.activity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -17,8 +16,9 @@ public class SettingsActivity extends PreferenceActivity implements
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.pref_geneal);
+
         bindPreferenceSumaryToValue(findPreference("location"));
-        bindPreferenceSumaryToValue(findPreference("metrics"));
+        bindPreferenceSumaryToValue(findPreference("list_preference"));
     }
 
     private void bindPreferenceSumaryToValue(Preference preference) {
@@ -40,9 +40,7 @@ public class SettingsActivity extends PreferenceActivity implements
             if(prefIndex >= 0) {
                 preference.setSummary(listPreference.getEntries()[prefIndex]);
             }
-        } else {
-            preference.setSummary(stringValue);
-        }
+        } else { preference.setSummary(stringValue); }
         return false;
     }
 }
