@@ -2,9 +2,11 @@ package com.study.jam.weather.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -40,6 +42,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);  // Cargamos nuestro layout XML.
         ButterKnife.bind(this);  // Injectamos las vistas con ButterKnife
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        // SharedPreferences prefs = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+
+        prefs.getString("MyKey", "DefaultValue");
+
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("email", "modificado@email.com");
+        editor.putString("nombre", "Prueba");
+        editor.commit();
 
         setSupportActionBar(toolbar);
 

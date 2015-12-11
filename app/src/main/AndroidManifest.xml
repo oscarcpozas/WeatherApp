@@ -28,6 +28,9 @@
             android:theme="@style/AppTheme">
         </activity>
 
+        <provider android:name=".helper.WeatherProvider"
+            android:authorities="com.study.jam.weather.contentproviders"/>
+
     </application>
 
 </manifest>
