@@ -12,4 +12,5 @@ public class Weather {
         this.title = title;
         return this;
     }
+
 }

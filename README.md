@@ -1,4 +1,4 @@
-# Weather
+# Weather  [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 Google Study Jam: Android source code.
 
 Este repositorio contiene el codigo de la aplicación que vamos realizando en las sesiones de la Google Study Jam organizada
@@ -12,7 +12,7 @@ encuentra en [Udacity](https://www.udacity.com/course/viewer#!/c-ud853/l-1395568
 Por cada sesión dada se crea una nueva Release con el resumen de la sesión y capturas del resultado
 ademas del codigo de que se ha escrito.
 
-**RECUERDA**: No necesariamente el ultimo commit realizado corresponde con lo hecho en la ultima sesión, te recomiendo siempre
+>  **RECUERDA**: No necesariamente el ultimo commit realizado corresponde con lo hecho en la ultima sesión, te recomiendo siempre
 bajar el codigo desde la Release.
 
 ## No somos perfectos...
@@ -23,3 +23,5 @@ no dudes en abrir un Issue con lo que hayas encontrado mal en el codigo, intenta
 * Lection I: Creación del proyecto, creando nuestra primera activity.
 * Lection II (Datos en local): Creando nuestra lista de datos.
 * Lection II (Datos de la API): Usando los datos de la API del tiempo para llenar nuestra lista.
+* Lection III (v1): Creamos nuestro segundo Activity que salta al pulsar algún Item de la lista.
+* Lection III (v2): La vista de detalle pasa a ser un fragment y añadimos la pantalla de Ajustes.

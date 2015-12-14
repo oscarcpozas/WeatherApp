@@ -1,8 +1,9 @@
 language: android
-sudo: true
+sudo: false
 
 android:
   components:
+    - tools
     - build-tools-23.0.2
     - android-23
     - extra-android-support
@@ -15,5 +16,3 @@ branches:
 
 script:
   ./gradlew assemble
-  ./gradlew assembleAndroidTest
-  ./gradlew build

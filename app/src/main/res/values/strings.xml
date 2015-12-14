@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Weather</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_info">InfoActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="action_settings">Settings</string>
 </resources>
