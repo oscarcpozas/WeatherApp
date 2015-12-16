@@ -25,3 +25,4 @@ no dudes en abrir un Issue con lo que hayas encontrado mal en el codigo, intenta
 * Lection II (Datos de la API): Usando los datos de la API del tiempo para llenar nuestra lista.
 * Lection III (v1): Creamos nuestro segundo Activity que salta al pulsar algún Item de la lista.
 * Lection III (v2): La vista de detalle pasa a ser un fragment y añadimos la pantalla de Ajustes.
+* Lection IV: Añadimos nuestro ContentProvider y una splash screen.
