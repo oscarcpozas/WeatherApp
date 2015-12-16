@@ -34,7 +34,7 @@
 
         <provider
             android:name=".helper.WeatherProvider"
-            android:authorities="com.study.jam.weather.contentproviders" />
+            android:authorities="com.study.jam.provider" />
 
     </application>
 

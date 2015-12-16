@@ -11,8 +11,9 @@ import android.support.annotation.Nullable;
 
 public class WeatherProvider extends ContentProvider {
 
+    // Definimos nuestro endpoint
     private static final String uri =
-            "content://net.sgoliver.android.contentproviders/clientes";
+            "content://com.study.jam.provider/weather";
     public static final Uri CONTENT_URI = Uri.parse(uri);
 
     private DbHelper database;
@@ -20,13 +21,12 @@ public class WeatherProvider extends ContentProvider {
     private static final int DB_VERSION = 1;
     private static final String TABLA_WEATHER = "Wheater";
 
-    // UriMatcher, capaz de interpretar determinados patrones en una URI
-    //UriMatcher
+    // UriMatcher
     private static final int WEATHER = 1;
     private static final int WEATHER_ID = 2;
     private static final UriMatcher uriMatcher;
 
-    //Inicializamos el UriMatcher
+    // Inicializamos el UriMatcher, capaz de interpretar determinados patrones en una URI
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI("com.study.jam.weather.contentproviders", "clientes", WEATHER);
@@ -34,15 +34,16 @@ public class WeatherProvider extends ContentProvider {
     }
 
     /*
-
-    Existirán dos tipos MIME distintos para cada entidad del content provider, uno de ellos destinado
-    a cuando se devuelve una lista de registros como resultado, y otro para cuando se devuelve un
-    registro único concreto. De esta forma, seguiremos los siguientes patrones para definir uno
-    y otro tipo de datos:
-
-        “vnd.android.cursor.item/vnd.xxxxxx” –> Registro único
-        “vnd.android.cursor.dir/vnd.xxxxxx” –> Lista de registros
-     */
+    *
+    * Existirán dos tipos MIME distintos para cada entidad del content provider, uno de ellos destinado
+    * a cuando se devuelve una lista de registros como resultado, y otro para cuando se devuelve un
+    * registro único concreto. De esta forma, seguiremos los siguientes patrones para definir uno
+    * y otro tipo de datos:
+    *
+    *    “vnd.android.cursor.item/vnd.xxxxxx” –> Registro único
+    *    “vnd.android.cursor.dir/vnd.xxxxxx” –> Lista de registros
+    *
+    */
 
     @Override
     public boolean onCreate() {
@@ -54,15 +55,13 @@ public class WeatherProvider extends ContentProvider {
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         String where = selection;
-        if(uriMatcher.match(uri) == WEATHER_ID) {
-            where = "_id=" + uri.getLastPathSegment();
-        }
+
+        if(uriMatcher.match(uri) == WEATHER_ID) { where = "_id=" + uri.getLastPathSegment(); }
 
         SQLiteDatabase db = database.getWritableDatabase();
 
         Cursor c = db.query(TABLA_WEATHER, projection, where,
                 selectionArgs, null, null, sortOrder);
-
         return c;
     }
 
@@ -73,9 +72,9 @@ public class WeatherProvider extends ContentProvider {
 
         switch (match) {
             case WEATHER:
-                return "vnd.android.cursor.dir/vnd.sgoliver.cliente";
+                return "vnd.android.cursor.dir/vnd.provider.weather";
             case WEATHER_ID:
-                return "vnd.android.cursor.item/vnd.sgoliver.cliente";
+                return "vnd.android.cursor.item/vnd.provider.weather";
             default:
                 return null;
         }
@@ -89,43 +88,33 @@ public class WeatherProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        int cont;
-
-        //Si es una consulta a un ID concreto construimos el WHERE
+        // Si es una consulta a un ID concreto construimos el WHERE
         String where = selection;
-        if(uriMatcher.match(uri) == WEATHER_ID){
-            where = "_id=" + uri.getLastPathSegment();
-        }
+        if(uriMatcher.match(uri) == WEATHER_ID) { where = "_id=" + uri.getLastPathSegment(); }
 
         SQLiteDatabase db = database.getWritableDatabase();
 
-        cont = db.delete(TABLA_WEATHER, where, selectionArgs);
-
+        int cont = db.delete(TABLA_WEATHER, where, selectionArgs);
         return cont;
     }
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        int cont;
-
         //Si es una consulta a un ID concreto construimos el WHERE
         String where = selection;
-        if(uriMatcher.match(uri) == WEATHER_ID){
-            where = "_id=" + uri.getLastPathSegment();
-        }
+        if(uriMatcher.match(uri) == WEATHER_ID) { where = "_id=" + uri.getLastPathSegment(); }
 
         SQLiteDatabase db = database.getWritableDatabase();
 
-        cont = db.update(TABLA_WEATHER, values, where, selectionArgs);
-
+        int cont = db.update(TABLA_WEATHER, values, where, selectionArgs);
         return cont;
     }
 
-    // Trae predefinidad algunas columnas como _ID
+    // BaseColums trae predefinidad algunas columnas como _ID, nosotros añadimos las nuestras
     public static final class WeatherColums implements BaseColumns {
+
         private WeatherColums() {}
 
-        //Nombres de columnas
         public static final String COL_DAY = "day";
         public static final String COL_TEMP = "temp";
 

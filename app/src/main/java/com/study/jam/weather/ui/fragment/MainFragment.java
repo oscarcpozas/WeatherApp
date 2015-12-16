@@ -1,5 +1,7 @@
 package com.study.jam.weather.ui.fragment;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.study.jam.weather.R;
+import com.study.jam.weather.helper.WeatherProvider;
 import com.study.jam.weather.model.Weather;
 import com.study.jam.weather.rest.HTTP;
 import com.study.jam.weather.rest.WeatherDataParser;
@@ -42,6 +45,14 @@ public class MainFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        // La logica de insert esta vacia por tanto esto no hara nada que podamos apreciar
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("MyKEY", "VALUE");
+
+        ContentResolver contentResolver = getContext().getContentResolver();
+        contentResolver.insert(WeatherProvider.CONTENT_URI, contentValues);
     }
 
     @Nullable

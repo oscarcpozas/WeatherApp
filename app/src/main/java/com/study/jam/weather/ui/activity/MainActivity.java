@@ -23,11 +23,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);  // Cargamos nuestro layout XML.
+        setContentView(R.layout.activity_main);  // Cargamos nuestro layout XML
         ButterKnife.bind(this);  // Injectamos las vistas con ButterKnife
 
         setSupportActionBar(toolbar);
-
 
         initFragment(MainFragment.newInstance());
         startActivity(new Intent(this, SplashActivity.class));
