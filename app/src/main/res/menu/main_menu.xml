@@ -1,3 +1,4 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/settings" android:title="Ajustes"/>
+    <item android:id="@+id/refresh" android:title="Actualizar"/>
 </menu>

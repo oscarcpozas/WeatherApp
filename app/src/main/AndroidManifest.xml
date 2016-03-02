@@ -36,6 +36,10 @@
             android:name=".helper.WeatherProvider"
             android:authorities="com.study.jam.provider" />
 
+        <service android:name=".service.WeatherService" />
+
+        <receiver android:name=".service.WeatherService$AlarmReceiver" android:enabled="true"/>
+
     </application>
 
 </manifest>
