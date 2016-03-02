@@ -12,8 +12,7 @@ encuentra en [Udacity](https://www.udacity.com/course/viewer#!/c-ud853/l-1395568
 Por cada sesión dada se crea una nueva Release con el resumen de la sesión y capturas del resultado
 ademas del codigo de que se ha escrito.
 
->  **RECUERDA**: No necesariamente el ultimo commit realizado corresponde con lo hecho en la ultima sesión, te recomiendo siempre
-bajar el codigo desde la Release.
+>  **RECUERDA**: No necesariamente el ultimo commit realizado corresponde con lo hecho en la ultima sesión, te recomiendo bajar siempre el codigo desde el apartado de [Releases](https://github.com/oscarcpozas/Weather/releases).
 
 ## No somos perfectos...
 Y alguna vez puedo subir algun commit que luego no funcione cuando lo ejecutes en tu terminal (o emulador), de ser así
@@ -25,3 +24,4 @@ no dudes en abrir un Issue con lo que hayas encontrado mal en el codigo, intenta
 * Lection II (Datos de la API): Usando los datos de la API del tiempo para llenar nuestra lista.
 * Lection III (v1): Creamos nuestro segundo Activity que salta al pulsar algún Item de la lista.
 * Lection III (v2): La vista de detalle pasa a ser un fragment y añadimos la pantalla de Ajustes.
+* Lection IV: Añadimos nuestro ContentProvider y una splash screen.
