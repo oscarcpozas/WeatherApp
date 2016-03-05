@@ -9,6 +9,26 @@
         android:layout_height="200dp"
         android:src="@drawable/heartocat"
         android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_splash"
+        android:text="Weather"
+        android:textColor="#ffffff"
+        android:textSize="40sp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hecho con amor en mi Study Jam"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_below="@+id/title_splash"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

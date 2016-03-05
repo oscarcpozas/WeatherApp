@@ -1,6 +1,5 @@
 package com.study.jam.weather.helper;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -70,10 +69,5 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onOpen(SQLiteDatabase db) {
         super.onOpen(db);
     }
-
-    /*
-    ContentResolver cr = getContentResolver();
-    cr.call(DBProvider.CONTENT_URI, "myfunction", null, null);
-     */
 
 }

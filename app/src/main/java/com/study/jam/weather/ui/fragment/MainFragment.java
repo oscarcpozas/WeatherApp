@@ -38,14 +38,11 @@ public class MainFragment extends Fragment {
         return new MainFragment();
     }
 
-    public MainFragment() {
-
-    }
+    public MainFragment() {}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         // La logica de insert esta vacia por tanto esto no hara nada que podamos apreciar
         ContentValues contentValues = new ContentValues();
@@ -125,6 +122,13 @@ public class MainFragment extends Fragment {
             try {
                 WeatherDataParser parser = new WeatherDataParser();
                 final ArrayList<Weather> data = parser.getWeatherDataFromJson(result);
+
+                ContentValues contentValues = new ContentValues();
+                for(int i=0; i<data.size(); i++) {
+                    contentValues.put("item" + i, data.get(i).getTitle());
+                }
+                ContentResolver contentResolver = getContext().getContentResolver();
+                contentResolver.insert(WeatherProvider.CONTENT_URI, contentValues);
 
                 RecyclerAdapter recyclerAdapter = new RecyclerAdapter(getContext(), data);
                 recyclerView.setAdapter(recyclerAdapter);
